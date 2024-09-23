@@ -14,10 +14,18 @@ public class HomePage extends BasePage{
         // Web Element:
         @FindBy (css = "img[class='avatar']")
         WebElement avatarIcon;
+        @FindBy (css = "a.view-profile")
+        WebElement userProfile;
 
-        public WebElement getUserAvatar(){
+
+        //Methods:
+        public WebElement getUserAvatar() {
             return avatarIcon;
         }
+        public void clickUserProfile(){
+            userProfile.click();
+        }
+
 
 
 
