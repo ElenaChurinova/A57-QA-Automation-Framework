@@ -4,7 +4,7 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.ProfilePage;
 
-public class Homework25 extends BaseTest{
+public class Homework26 extends BaseTest{
     @Test
     public void testLoginValidEmailPassword() {
         LoginPage loginPage = new LoginPage(getDriver());
