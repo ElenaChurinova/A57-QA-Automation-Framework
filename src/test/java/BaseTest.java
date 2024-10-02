@@ -81,7 +81,7 @@ public class BaseTest {
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--remote-allow-origins=*", "--incognito","--allow-notifications");
+                chromeOptions.addArguments("--remote-allow-origins=*", "--incognito","--disable-notifications","--start-maximized");
                 return driver = new ChromeDriver(chromeOptions);
 
         }
