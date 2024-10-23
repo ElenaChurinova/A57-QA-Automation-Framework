@@ -3,23 +3,29 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
 
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
     @Test
-    public void loginEmptyEmailPassword() {
+    public void testLoginSuccess() {
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        // Login to Koel Page:
+        loginPage.login();
+        // Assertion
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
+    String url = "https://qa.koel.app/";
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
+     @Test (dataProvider = "NegativeLoginTestData")
+    public void negativeLoginTests(String email, String password){
+        LoginPage loginPage = new LoginPage(getDriver());
+        // Login to Koel Page:
+        loginPage.provideEmail(email).providePassword(password).clickLoginBtn();
+        // Assert
+        Assert.assertEquals(getDriver().getCurrentUrl(),url);
     }
 }

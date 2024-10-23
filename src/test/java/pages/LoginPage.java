@@ -21,16 +21,19 @@ public class LoginPage extends BasePage{
 
     //Helper methods
 
-    public void provideEmail(String email){
+    public LoginPage provideEmail(String email){
         emailField.clear();
         emailField.sendKeys(email);
+        return this;
     }
-    public void providePassword(String password){
+    public LoginPage providePassword(String password){
         passwordField.clear();
         passwordField.sendKeys(password);
+        return this;
     }
-    public void clickLoginBtn(){
+    public LoginPage clickLoginBtn(){
         clickBtn.click();
+        return this;
     }
 
     public void login(){
@@ -38,4 +41,5 @@ public class LoginPage extends BasePage{
         providePassword("skL&mpg67");
         clickLoginBtn();
     }
+
 }
